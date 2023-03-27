@@ -1,0 +1,78 @@
+
+.navbar {
+    background-color: rgba(10, 25, 47, 1) !important;
+    width: 100% !important;
+}
+
+.offcanvas-header .btn-close{
+    border: 1px solid #64ffda;
+    color: rgba(100, 255, 218, 0.4) !important; 
+    background: transparent url("../../Assets/Images/close-btn.svg");
+    background-position: 6px 6px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.btn-close:focus {
+    box-shadow: 0 0.125rem 0.50rem rgba(100, 255, 218, 0.5) !important;
+    
+}
+    
+.offcanvas {
+    background-color: rgba(10, 25, 47, 1) !important;
+}
+
+
+.navbar-toggler {
+    border: 1px solid #64ffda;
+    color: rgba(100, 255, 218, 0.4);
+}
+
+.navbar-toggler-icon {
+    background-image: url("../../Assets/Images/hamburger.svg");
+}
+
+.navbar-nav .nav-link.active {
+    color: #64ffda;
+    font-size: .97rem;
+}
+
+.navbar-nav a {
+    color: #ccd6f6;
+    font-family: 'PT Mono', monospace;
+    font-size: .95rem;
+    letter-spacing: 1px;
+}
+
+.navbar-nav .nav-link.nav-last {
+    margin-right: .5rem !important;
+}
+.navbar-nav a:hover {
+    color: #64ffda;
+}
+
+.navbar-nav a span {
+    font-size: 0.9rem;
+    color: #64ffda !important;
+    margin-right: 3px;
+}
+
+
+.offcanvas-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offcanvas.offcanvas-end {
+    width: min(75vw, 400px);
+}
+
+@media (max-width: 767px){
+    .navbar-nav a span{
+        display: block;
+        margin: 5px auto;
+    }
+
+}
+
