@@ -1,8 +1,9 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Preloader from "./Components/Preloader/Preloader";
 import Home from "./Pages/Home/Home";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const ResetPassword = React.lazy(() =>
   import("./Components/ResetPassword/ResetPassword")
@@ -10,39 +11,46 @@ const ResetPassword = React.lazy(() =>
 const NewPassword = React.lazy(() =>
   import("./Components/ResetPassword/NewPassword")
 );
+const AdminLogin = React.lazy(() => import("./Pages/Admin/Login/Login"));
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
   return (
     <div className="App">
-      {loading ? (
-        <div className="Preloader">
-          <Preloader />
-        </div>
-      ) : (
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/forget-password"
-            element={
-              <Suspense fallback={<p>loading...</p>}>
-                <ResetPassword />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/new-password/:id/:token"
-            element={
-              <Suspense fallback={<p>loading...</p>}>
-                <NewPassword />
-              </Suspense>
-            }
-          />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <AdminLogin />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <PrivateRoute>
+              <p>Admin Dashboard</p>
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/forget-password"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <ResetPassword />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/new-password/:id/:token"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <NewPassword />
+            </Suspense>
+          }
+        />
+      </Routes>
     </div>
   );
 }

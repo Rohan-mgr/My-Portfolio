@@ -13,3 +13,7 @@ export const passwordValidation = yup.object().shape({
     .matches(passwordRegex, { message: "Please enter a strong password" })
     .required("Please enter the password"),
 });
+export const adminLoginValidation = yup.object().shape({
+  email: yup.string().email().required("Please enter your email"),
+  password: yup.string().required("Please enter your password"),
+});

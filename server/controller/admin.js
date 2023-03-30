@@ -2,6 +2,7 @@ const Admin = require("../Model/admin");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../utils/mailer");
+const mongoose = require("mongoose");
 
 exports.adminLogin = async (req, res, next) => {
   const email = req.body.email;
@@ -16,7 +17,7 @@ exports.adminLogin = async (req, res, next) => {
     }
     const validPassword = await bcrypt.compare(password, admin.password);
     if (!validPassword) {
-      const error = new Error("Invalid UserName or Password");
+      const error = new Error("Incorrect Password! Try Again!");
       error.statusCode = 401;
       throw error;
     }
@@ -30,12 +31,14 @@ exports.adminLogin = async (req, res, next) => {
         expiresIn: "1h",
       }
     );
-    res.status(200).json({
+    res.status(200).send({
       message: "Login Successfull",
+      status: 200,
       token: token,
       adminId: admin._id.toString(),
     });
   } catch (error) {
+    console.log(error.message);
     if (!error.statusCode) {
       error.statusCode = 500;
     }
@@ -48,7 +51,7 @@ exports.GetPasswordReset = async (req, res, next) => {
   try {
     const admin = await Admin.findOne({ email: email });
     if (!admin) {
-      const error = new Error("User does not Exists!");
+      const error = new Error("Email Address does not exists!");
       error.statusCode = 401;
       throw error;
     }
@@ -83,14 +86,19 @@ exports.handlePasswordReset = async (req, res, next) => {
   const newPassword = req.body.newPassword;
 
   try {
+    if (!mongoose.Types.ObjectId.isValid(adminId)) {
+      const error = new Error("Invalid User Id");
+      error.statusCode = 401;
+      throw error;
+    }
     const existingAdmin = await Admin.findOne({
       _id: adminId,
       passwordResetToken: token,
     });
     const verifyToken = jwt.verify(token, process.env.JWT_TOKEN_SECRET);
 
-    if (!existingAdmin && !verifyToken.Id) {
-      const error = new Error("No User found!");
+    if (!existingAdmin || !verifyToken.Id) {
+      const error = new Error("Token is not valid!");
       error.statusCode = 404;
       throw error;
     }
@@ -104,11 +112,19 @@ exports.handlePasswordReset = async (req, res, next) => {
       .status(200)
       .json({ message: "Password Updated Successfully", status: 200 });
   } catch (error) {
+    if (error instanceof mongoose.Error.CastError) {
+      console.log("mongoose error");
+      error.message = "mongoose error";
+      // throw new Error("Invalid UserId!");
+    }
     if (!error.statusCode) {
       error.statusCode = 500;
     }
     if (error.name === "TokenExpiredError") {
-      error.message = "Token in not valid! Try Again";
+      error.message = "Token is expired! Try Again";
+    }
+    if (error.name === "JsonWebTokenError") {
+      error.message = "Token is not valid!";
     }
     next(error);
   }
