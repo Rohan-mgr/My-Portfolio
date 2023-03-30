@@ -3,7 +3,7 @@ import "./Preloader.css";
 
 function Preloader() {
   return (
-    <div>
+    <div className="Preloader">
       <svg
         width="78"
         height="78"

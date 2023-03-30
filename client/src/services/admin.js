@@ -16,3 +16,9 @@ export const handleSetNewPassword = async (id, token, newPassword) => {
   const response = await httpAuth.post(URL, JSON.stringify(newPassword));
   return response;
 };
+export const handleAdminLogin = async (credentials) => {
+  const URL = AUTH_ENDPOINT.signin;
+  console.log(URL);
+  const response = await httpAuth.post(URL, JSON.stringify(credentials));
+  return response;
+};

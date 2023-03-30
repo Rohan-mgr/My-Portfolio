@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import { passwordValidation } from "../../validation-schema/validation";
 import { handleSetNewPassword } from "../../services/admin";
 import Alert from "../Alert/Alert";
+import MySpinner from "../Spinner/Spinner";
 
 function ResetPassword() {
   // const navigate = useNavigate();
@@ -18,6 +19,7 @@ function ResetPassword() {
       newPassword: "",
     },
     validationSchema: passwordValidation,
+    validateOnBlur: false,
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await handleSetNewPassword(id, token, values);
@@ -85,7 +87,13 @@ function ResetPassword() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
         <Button Padding=".8rem" Type="submit">
-          Submit
+          {formik.isSubmitting ? (
+            <>
+              <MySpinner /> Submitting...
+            </>
+          ) : (
+            "Submit"
+          )}
         </Button>
       </Form>
     </div>
