@@ -22,7 +22,7 @@ const sendEmail = ({ admin, resetToken }) => {
         <p>You requested a password reset</p>
         <p>Click this <a href="http://localhost:3000/new-password/${
           admin._id
-        }/${resetToken}">Link</a> to set a new password</p>
+        }/${resetToken}" target="_self">Link</a> to set a new password</p>
         <p>This link only valid for 2 minutes</p>
       </div>`,
       attachments: [
