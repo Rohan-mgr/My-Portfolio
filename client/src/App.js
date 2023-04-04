@@ -11,7 +11,9 @@ const ResetPassword = React.lazy(() =>
 const NewPassword = React.lazy(() =>
   import("./Components/ResetPassword/NewPassword")
 );
-const AdminLogin = React.lazy(() => import("./Pages/Admin/Login/Login"));
+const AdminLogin = React.lazy(() => import("./Pages/Login/Login"));
+const Dashboard = React.lazy(() => import("./Pages/Admin/Dashboard"));
+const Page404 = React.lazy(() => import("./Pages/404/404"));
 
 function App() {
   return (
@@ -30,10 +32,13 @@ function App() {
           path="/admin/dashboard"
           element={
             <PrivateRoute>
-              <p>Admin Dashboard</p>
+              <Dashboard />
             </PrivateRoute>
           }
-        ></Route>
+        >
+          <Route path="welcome" element={<p>dashboard</p>} />
+          <Route path="resume" element={<p>Resume</p>} />
+        </Route>
         <Route
           path="/forget-password"
           element={
@@ -50,6 +55,7 @@ function App() {
             </Suspense>
           }
         />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );

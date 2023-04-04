@@ -9,13 +9,7 @@ import Button from "../Button/Button";
 
 function NavigationBar() {
   return (
-    <Navbar
-      collapseOnSelect
-      expand="md"
-      variant="light"
-      bg="light"
-      breakpoint="md"
-    >
+    <Navbar collapseOnSelect expand="lg" variant="light" bg="light">
       <Container fluid className="m-2">
         <Navbar.Brand href="/">
           <Logo />

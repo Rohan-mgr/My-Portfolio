@@ -8,6 +8,7 @@ function Button(props) {
         type={props.Type ? props.Type : "button"}
         style={{ padding: props.Padding }}
         className="primary-btn"
+        onClick={props.Func}
       >
         {props.children}
       </button>
