@@ -11,10 +11,7 @@ function SideNav() {
         href="/admin/dashboard"
         className="brand-link d-flex align-items-center"
       >
-        {/* <img src={require("../../Assets/Images/logo.png")} alt="logo" /> */}
-        <span className="brand-text font-weight-light text-center">
-          Rohan Rana Magar
-        </span>
+        <img src={require("../../Assets/Images/logo.png")} alt="logo" />
       </a>
 
       <div className="sidebar ">

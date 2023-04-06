@@ -7,7 +7,6 @@
     min-height: 100vh;
     height: 100vh;
     padding: 0 150px;
-    background: #0a192f;
 }
 .landing-page h1 {
     margin: 0 0 15px 4px;
@@ -25,7 +24,7 @@
     margin: 0 0 10px;
     font-weight: 800;
     font-family: 'PT Mono', monospace;
-    font-size: clamp(26.67px, 8vw, 80px);
+    font-size: clamp(26.67px, 6vw, 80px);
 }
 .email-wrapper {
     writing-mode: vertical-rl;

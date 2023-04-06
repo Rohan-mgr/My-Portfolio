@@ -68,7 +68,7 @@
     width: min(75vw, 400px);
 }
 
-@media (max-width: 768px){
+@media (max-width: 991px){
     .offcanvas-body .navbar-nav a span{
         display: block;
         margin: 5px auto;

@@ -1,0 +1,31 @@
+#work {
+    min-height: 100vh;
+    padding: 100px 150px 0;
+    font-family: 'PT Mono', monospace;
+    font-size: clamp(12px, 5vw, 20px);
+    color: #ccd6f6;
+}
+
+.feature__projects {
+    list-style: none;
+}
+
+.feature__projects .project {
+    display: grid;
+    position: relative;
+    gap: 10px; 
+    grid-template-columns: repeat(12, 1fr);
+    -webkit-box-align: center;
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.feature__projects .project .project__content {
+    border: 1px solid red; 
+}
+.feature__projects .project .project__image {
+    border: 1px solid red; 
+}
