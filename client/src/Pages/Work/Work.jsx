@@ -15,7 +15,7 @@ function Work() {
           <div className="project__content">
             <div>
               <p className="project-overline">Featured Project</p>
-              <h3>
+              <h3 className="project-title">
                 <a
                   href="https://photo-gallery-b0459.web.app/"
                   target="_blank"
@@ -53,10 +53,12 @@ function Work() {
               rel="noopener noreferrer"
             >
               <div className="project__image__wrapper">
-                <img
-                  src={require("../../Assets/Images/rohan.jpg")}
-                  alt="project-img"
-                />
+                <div>
+                  <img
+                    src={require("../../Assets/Images/rohan.jpg")}
+                    alt="project-img"
+                  />
+                </div>
               </div>
             </a>
           </div>
