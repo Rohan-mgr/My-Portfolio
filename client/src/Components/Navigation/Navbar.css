@@ -1,7 +1,6 @@
 
 .navbar {
     background-color: rgba(10, 25, 47, 1) !important;
-    width: 100% !important;
 }
 
 .offcanvas-header .btn-close{
@@ -24,12 +23,12 @@
 
 
 .navbar-toggler {
-    border: 1px solid #64ffda;
-    color: rgba(100, 255, 218, 0.4);
+    border: 1px solid #64ffda !important;
+    color: rgba(100, 255, 218, 0.4) !important;
 }
 
 .navbar-toggler-icon {
-    background-image: url("../../Assets/Images/hamburger.svg");
+    background-image: url("../../Assets/Images/hamburger.svg") !important;
 }
 
 .navbar-nav .nav-link.active {
@@ -38,17 +37,18 @@
 }
 
 .navbar-nav a {
-    color: #ccd6f6;
+    color: #ccd6f6 !important;
     font-family: 'PT Mono', monospace;
     font-size: .95rem;
     letter-spacing: 1px;
 }
 
+
 .navbar-nav .nav-link.nav-last {
     margin-right: .5rem !important;
 }
 .navbar-nav a:hover {
-    color: #64ffda;
+    color: #64ffda !important;
 }
 
 .navbar-nav a span {
@@ -68,8 +68,8 @@
     width: min(75vw, 400px);
 }
 
-@media (max-width: 767px){
-    .navbar-nav a span{
+@media (max-width: 991px){
+    .offcanvas-body .navbar-nav a span{
         display: block;
         margin: 5px auto;
     }
