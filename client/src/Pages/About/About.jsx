@@ -61,7 +61,7 @@ function About() {
             </li>
           </ul>
         </Col>
-        <Col className="col-12 col-lg-6 d-flex justify-content-center">
+        <Col className="col-12 col-lg-6 d-flex justify-content-center mb-3">
           <div className="image__wrapper">
             <img
               src={require("../../Assets/Images/rohan.jpg")}
