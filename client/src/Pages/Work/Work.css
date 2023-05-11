@@ -263,4 +263,7 @@ img[alt=""], img:not([alt]){
     .projects__list {
         grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
     }
+    .bolder__heading {
+        font-size: 1.5rem;
+    }
 }
