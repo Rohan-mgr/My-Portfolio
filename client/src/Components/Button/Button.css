@@ -9,6 +9,7 @@
     cursor: pointer;
     border-radius: 0.38rem;
     background: transparent;
+    width: 100%;
 }
 .primary-btn:hover {
     background: #19273f;

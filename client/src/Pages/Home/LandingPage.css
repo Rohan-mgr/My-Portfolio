@@ -92,6 +92,12 @@
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+@media (max-width: 992px) {
+    .landing-page {
+        padding: 100px 100px 0;
+    }
+}
+
 
 @media (max-width: 768px) {
     .landing-page {
