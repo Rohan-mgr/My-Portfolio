@@ -32,20 +32,17 @@ function SmallCard(props) {
           </a>
         </h3>
         <div style={{ fontSize: "17px" }} className="project__description">
-          <p style={{ margin: "0 0 15px" }}>
-            Web App that builds burger according to user choice of ingredients
-            allowing authentication of user.
-          </p>
+          <p style={{ margin: "0 0 15px" }}>{desc}</p>
         </div>
       </header>
-      <footer>
+      <div>
         <ul className="project__tech__list">
           <li>HTML</li>
           <li>CSS</li>
           <li>Js</li>
           <li>React</li>
         </ul>
-      </footer>
+      </div>
     </li>
   );
 }

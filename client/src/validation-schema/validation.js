@@ -17,3 +17,15 @@ export const adminLoginValidation = yup.object().shape({
   email: yup.string().email().required("Please enter your email"),
   password: yup.string().required("Please enter your password"),
 });
+
+export const contactFormValidation = yup.object().shape({
+  from_name: yup.string().min(2).required("Please enter your full name"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(10, "Number must be of 10 digit")
+    .max(10, "Number must be of 10 digit")
+    .required("Please enter your mobile number"),
+  user_email: yup.string().email().required("Please enter your email"),
+  message: yup.string().min(2).required("Please enter your message"),
+});
