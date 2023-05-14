@@ -3,6 +3,8 @@ import "./Work.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { FiGithub } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import SmallCard from "../../Components/Common/SmallCard/SmallCard";
+import { ProjectData } from "./projectdata";
 
 function Work() {
   return (
@@ -40,7 +42,11 @@ function Work() {
                 <a href="" target="_blank" rel="noopener noreferrer">
                   <FiGithub />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://photo-gallery-b0459.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <HiOutlineExternalLink />
                 </a>
               </div>
@@ -92,7 +98,11 @@ function Work() {
                 <a href="" target="_blank" rel="noopener noreferrer">
                   <FiGithub />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://photo-gallery-b0459.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <HiOutlineExternalLink />
                 </a>
               </div>
@@ -144,7 +154,11 @@ function Work() {
                 <a href="" target="_blank" rel="noopener noreferrer">
                   <FiGithub />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://photo-gallery-b0459.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <HiOutlineExternalLink />
                 </a>
               </div>
@@ -167,6 +181,19 @@ function Work() {
             </a>
           </div>
         </li>
+      </ul>
+      <h2 className="bolder__heading">Other NoteWorthy Projects</h2>
+      <ul className="projects__list">
+        {ProjectData.map((project, index) => (
+          <SmallCard
+            key={project.projectID}
+            title={project.title}
+            desc={project.description}
+            link={project.link}
+            isGithubLinkPresent={project.hasOwnProperty("githubLink")}
+            github={project.githubLink}
+          />
+        ))}
       </ul>
     </Container>
   );
