@@ -1,13 +1,10 @@
 #contact {
-    min-height: 100vh;
     padding: 100px 150px 0;
     font-family: 'PT Mono', monospace;
     font-size: clamp(12px, 5vw, 20px);
     color: #ccd6f6;
 }
 #contact form {
-    /* width: 100%; */
-    /* margin: 1.5rem auto 0; */
     display: grid;
     align-content: center;
     grid-template-columns: repeat(2, minmax(auto, 1fr));

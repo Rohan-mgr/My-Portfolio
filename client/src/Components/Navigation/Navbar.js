@@ -26,7 +26,7 @@ function NavigationBar() {
             ></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 text-center">
+            <Nav className="justify-content-end align-items-center flex-grow-1 text-center">
               <Nav.Link href="#about">
                 <span>01.</span>About
               </Nav.Link>
@@ -36,7 +36,9 @@ function NavigationBar() {
               <Nav.Link className="nav-last" href="#contact">
                 <span>03.</span>Contact
               </Nav.Link>
-              <Button Padding="0.65rem 1rem">Resume</Button>
+              <div style={{ width: "100px" }}>
+                <Button Padding="0.65rem 1rem">Resume</Button>
+              </div>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
