@@ -23,15 +23,12 @@
     justify-content: space-between;
     gap: 10px;
 }
-#contact form input,
-form textarea {
-    padding: 10px;
-    border-radius: 0.48rem;
+#contact form input, #contact form textarea {
+    color: #8892b0; 
     background: transparent;
-    border: 1px solid #64ffda;
-    outline: none;
-    color: #8892b0;
+    resize: none;
 }
+
 #contact input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px #0a192f inset;
     -webkit-text-fill-color: #8892b0;
