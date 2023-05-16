@@ -18,6 +18,7 @@ function Contact() {
       console.log(values);
     },
     validationSchema: contactFormValidation,
+    validateOnBlur: false,
   });
 
   return (
@@ -25,7 +26,7 @@ function Contact() {
       <h2 className="number-heading">
         <span>03.</span> Get In Touch
       </h2>
-      <Form onSubmit={formik.handleSubmit}>
+      <Form className="common__form" onSubmit={formik.handleSubmit}>
         <div className="Contact__form__left">
           <Form.Group>
             <Form.Label htmlFor="fullName">

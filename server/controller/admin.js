@@ -1,4 +1,5 @@
 const Admin = require("../Model/admin");
+const Project = require("../Model/project");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../utils/mailer");
@@ -166,4 +167,45 @@ exports.createAdmin = async (req, res, next) => {
     }
     next(error);
   }
+};
+
+exports.handleProjectUpload = async (req, res, next) => {
+  const title = req.body.title;
+  const desc = req.body.description;
+  const githubLink = req.body.githubLink;
+  const deployedLink = req.body.deployedLink;
+  const is_feature_project = Boolean(req.body.feature_project);
+  const techList = req.body.techList;
+
+  res.json(req.body);
+
+  // try {
+  //   const admin = await Admin.findById(req.adminId);
+  //   if (!admin) {
+  //     const error = new Error("No Admin exists yet!");
+  //     error.statusCode = 404;
+  //     throw error;
+  //   }
+
+  //   const project = new Project({
+  //     title: title,
+  //     description: desc,
+  //     githubLink: githubLink,
+  //     deployedLink: deployedLink,
+  //     feature_project: is_feature_project,
+  //     techList: techList,
+  //   });
+
+  //   const newUploadedProject = await project.save();
+  //   res.status(200).json({
+  //     message: "Project uploaded successfully",
+  //     status: 200,
+  //     newProject: newUploadedProject,
+  //   });
+  // } catch (error) {
+  //   if (!error.statusCode) {
+  //     error.statusCode = 500;
+  //   }
+  //   next(error);
+  // }
 };

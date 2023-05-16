@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import Button from "../../Components/Button/Button";
 import Form from "react-bootstrap/Form";
@@ -8,12 +8,18 @@ import { adminLoginValidation } from "../../validation-schema/validation";
 import { Link, useNavigate } from "react-router-dom";
 import { handleAdminLogin } from "../../services/admin";
 import Alert from "../../Components/Alert/Alert";
-import { _setSecureLs } from "../../helper/storage";
+import { _setSecureLs, _getSecureLs } from "../../helper/storage";
 import MySpinner from "../../Components/Spinner/Spinner";
 
 function ResetPassword() {
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
+
+  useEffect(() => {
+    const { isLoggedIn } = _getSecureLs("auth");
+    isLoggedIn && navigate("/admin/dashboard/welcome");
+  }, [navigate]);
+
   const formik = useFormik({
     initialValues: {
       email: "",

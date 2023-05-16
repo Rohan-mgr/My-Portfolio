@@ -10,7 +10,11 @@ export const _getSecureLs = (key) => {
   return ls.get(key);
 };
 
-export const _removeAllLs = () => {
+export const _remove = (key) => {
+  return ls.remove(key);
+};
+
+export const _removeAll = () => {
   ls.removeAll();
 };
 
