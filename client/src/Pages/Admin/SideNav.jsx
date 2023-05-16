@@ -1,10 +1,12 @@
 import React from "react";
 import "./SideNav.css";
-// import { ROUTES } from "../../helper/routes";
-// import { _removeAllLs, _getSecureLs } from "../../helper/storage";
+import { _remove } from "../../helper/storage";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // temporary
 
 function SideNav() {
+  // temporary redirection as it will be on profile setting
+  const navigate = useNavigate();
   return (
     <aside className="main-sidebar sidebar-dark-primary ">
       <a
@@ -32,14 +34,24 @@ function SideNav() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="resume"
+                to="projects"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
-                <i className="nav-icon fa fa-house-user" aria-hidden="true"></i>
-                Resume
+                <i className="nav-icon fa fa-cogs" aria-hidden="true"></i>
+                Projects
               </NavLink>
+            </li>
+            <li>
+              <button
+                onClick={() => {
+                  _remove("auth");
+                  navigate("/admin");
+                }}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </nav>

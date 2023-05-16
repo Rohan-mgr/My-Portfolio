@@ -15,6 +15,11 @@ const AdminLogin = React.lazy(() => import("./Pages/Login/Login"));
 const Dashboard = React.lazy(() => import("./Pages/Admin/Dashboard"));
 const Page404 = React.lazy(() => import("./Pages/404/404"));
 
+// pages that can be viewed by admin after logged in
+const Projects = React.lazy(() =>
+  import("./Pages/Admin/Admin-Views/Projects/Projects")
+);
+
 function App() {
   return (
     <div className="App">
@@ -37,7 +42,14 @@ function App() {
           }
         >
           <Route path="welcome" element={<p>dashboard</p>} />
-          <Route path="resume" element={<p>Resume</p>} />
+          <Route
+            path="projects"
+            element={
+              <Suspense fallback={<Preloader />}>
+                <Projects />
+              </Suspense>
+            }
+          />
         </Route>
         <Route
           path="/forget-password"

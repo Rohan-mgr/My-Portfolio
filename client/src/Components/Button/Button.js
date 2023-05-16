@@ -6,7 +6,7 @@ function Button(props) {
     <button
       type={props.Type ? props.Type : "button"}
       style={{ padding: props.Padding }}
-      className="primary-btn"
+      className={`primary-btn ${props.setBackground && "bg"}`}
       onClick={props.Func}
     >
       {props.children}

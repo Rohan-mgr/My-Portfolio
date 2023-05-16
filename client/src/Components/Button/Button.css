@@ -11,12 +11,16 @@
     background: transparent;
     width: 100%;
 }
+.primary-btn.bg {
+    background: rgba(10, 25, 47, 1);
+    color: #ccd6f6;
+}
 .primary-btn:hover {
     background: #19273f;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .primary-btn {
         margin: 1.7rem 0;
     }
-}
+} */

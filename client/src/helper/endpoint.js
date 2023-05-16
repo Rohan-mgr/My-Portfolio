@@ -3,5 +3,6 @@ import { config } from "../config";
 export const AUTH_ENDPOINT = {
   resetPassword: config.baseURL + "/admin/reset",
   resetNewPassword: config.baseURL + "/admin/new-password",
-  signin: config.baseURL + "/admin/signin",
+  signIn: config.baseURL + "/admin/signin",
+  uploadProject: config.baseURL + "/admin/upload-projects",
 };

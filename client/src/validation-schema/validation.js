@@ -29,3 +29,13 @@ export const contactFormValidation = yup.object().shape({
   user_email: yup.string().email().required("Please enter your email"),
   message: yup.string().min(2).required("Please enter your message"),
 });
+
+export const projectFormValidation = yup.object().shape({
+  title: yup.string().min(2).required("Please enter project title"),
+  githubLink: yup.string().required("Please enter project github link"),
+  deployedLink: yup.string().required("Please enter project deployed link"),
+  description: yup.string().min(2).required("Please enter project description"),
+  feature_project: yup
+    .string()
+    .required("Please select Whether it is feature project or not"),
+});
