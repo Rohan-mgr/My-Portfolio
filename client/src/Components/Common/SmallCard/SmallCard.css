@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding: 2rem 1.75rem;
+    padding: 1.5rem 1.75rem;
     background: #112240;
     border-radius: 0.38rem;
     position: relative;
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 10px;
 }
 .project__top .folder {
     color: #64ffda;
@@ -56,6 +56,7 @@
 .project__inner .project__title a {
     text-decoration: none;
     display: inline-block;
+    font-size: 1.3rem;
     color: inherit;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

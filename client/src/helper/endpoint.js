@@ -5,4 +5,5 @@ export const AUTH_ENDPOINT = {
   resetNewPassword: config.baseURL + "/admin/new-password",
   signIn: config.baseURL + "/admin/signin",
   uploadProject: config.baseURL + "/admin/upload-projects",
+  fetchProjects: config.baseURL + "/admin/projects",
 };

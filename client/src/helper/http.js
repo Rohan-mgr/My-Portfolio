@@ -22,6 +22,26 @@ http.interceptors.response.use(
   }
 );
 
+export const httpMultiPartForm = axios.create({
+  baseURL: config.baseURL,
+  headers: { "Content-Type": "multipart/form-data" },
+});
+
+httpMultiPartForm.interceptors.request.use((req) => {
+  req.headers.authorization = `Bearer ${getUserToken()}`;
+
+  return req;
+});
+
+httpMultiPartForm.interceptors.response.use(
+  (res) => {
+    return res.data;
+  },
+  (err) => {
+    return Promise.reject(err?.response?.data?.message);
+  }
+);
+
 export const httpAuth = axios.create({
   baseURL: config.baseURL,
   headers: { "Content-Type": "application/json" },

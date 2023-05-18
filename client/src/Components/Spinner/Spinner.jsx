@@ -1,11 +1,11 @@
 import Spinner from "react-bootstrap/Spinner";
 
-function MySpinner() {
+function MySpinner({ spinnerSize }) {
   return (
     <Spinner
       as="span"
       animation="border"
-      size="sm"
+      size={spinnerSize || "sm"}
       role="status"
       aria-hidden="true"
     >
