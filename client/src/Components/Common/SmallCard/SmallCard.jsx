@@ -4,7 +4,7 @@ import { FiFolder, FiGithub } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
 
 function SmallCard(props) {
-  const { title, desc, link, github, isGithubLinkPresent } = props;
+  const { title, desc, deployedLink, githubLink, techList } = props;
   return (
     <li className="project__inner">
       <header>
@@ -13,21 +13,23 @@ function SmallCard(props) {
             <FiFolder />
           </div>
           <div className="project__links">
-            {isGithubLinkPresent && (
-              <a href={github} rel="noopener noreferrer" target="_blank">
+            {githubLink !== "" && (
+              <a href={githubLink} rel="noopener noreferrer" target="_blank">
                 <FiGithub />
               </a>
             )}
-            <a href={link} rel="noopener noreferrer" target="_blank">
-              <HiOutlineExternalLink
-                aria-label="External Link"
-                style={{ width: "25px", height: "25px" }}
-              />
-            </a>
+            {deployedLink && (
+              <a href={deployedLink} rel="noopener noreferrer" target="_blank">
+                <HiOutlineExternalLink
+                  aria-label="External Link"
+                  style={{ width: "25px", height: "25px" }}
+                />
+              </a>
+            )}
           </div>
         </div>
         <h3 className="project__title">
-          <a href={link} target="_blank" rel="noreferrer">
+          <a href={githubLink} target="_blank" rel="noreferrer">
             {title}
           </a>
         </h3>
@@ -37,10 +39,9 @@ function SmallCard(props) {
       </header>
       <div>
         <ul className="project__tech__list">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>Js</li>
-          <li>React</li>
+          {techList?.map((tech, i) => {
+            return <li key={i}>{tech}</li>;
+          })}
         </ul>
       </div>
     </li>

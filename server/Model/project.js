@@ -17,13 +17,17 @@ const projectSchema = new Schema(
     },
     deployedLink: {
       type: String,
-      required: true,
+      default: "",
     },
     feature_project: {
       type: Boolean,
       required: true,
     },
     techList: [{ type: String }],
+    imageUrl: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

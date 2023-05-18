@@ -40,7 +40,7 @@ function SideNav() {
                 }
               >
                 <i className="nav-icon fa fa-cogs" aria-hidden="true"></i>
-                Projects
+                Add New Project
               </NavLink>
             </li>
             <li>

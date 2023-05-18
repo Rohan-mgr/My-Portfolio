@@ -23,7 +23,6 @@ function Projects() {
     },
     onSubmit: async (values, { resetForm }) => {
       values = { ...values, techList };
-      console.log(values);
       try {
         const response = await handleProjectUpload(values);
         console.log(response);
@@ -114,15 +113,7 @@ function Projects() {
               onBlur={formik.handleBlur}
               placeholder="Project deployed link"
               id="deployedLink"
-              isInvalid={
-                !!formik.errors.deployedLink && formik.touched.deployedLink
-              }
             />
-            {formik.errors.deployedLink && formik.touched.deployedLink && (
-              <div className="invalid-feedback">
-                {formik.errors.deployedLink}
-              </div>
-            )}
           </Form.Group>
 
           <MultiInputs techLists={techList} setTechLists={setTechLists} />

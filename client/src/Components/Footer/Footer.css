@@ -21,7 +21,7 @@
 
 footer > p {
     margin: 1rem auto;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 @media (min-width: 769px) {

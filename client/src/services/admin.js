@@ -1,7 +1,11 @@
-// import { _getSecureLs, getUserToken } from "../helper/storage";
-
 import { AUTH_ENDPOINT } from "../helper/endpoint";
-const { httpAuth, http } = require("../helper/http");
+const { httpAuth, httpMultiPartForm } = require("../helper/http");
+
+export const getAllProjects = async () => {
+  const URL = AUTH_ENDPOINT.fetchProjects;
+  const response = await httpAuth.get(URL);
+  return response;
+};
 
 export const handleResetPassword = async (email) => {
   const URL = AUTH_ENDPOINT.resetPassword;
@@ -22,6 +26,16 @@ export const handleAdminLogin = async (credentials) => {
 
 export const handleProjectUpload = async (projectInfo) => {
   const URL = AUTH_ENDPOINT.uploadProject;
-  const response = await http.post(URL, JSON.stringify(projectInfo));
+
+  const formData = new FormData();
+  formData.append("title", projectInfo.title);
+  formData.append("description", projectInfo.description);
+  formData.append("githubLink", projectInfo.githubLink);
+  formData.append("deployedLink", projectInfo.deployedLink);
+  formData.append("feature_project", projectInfo.feature_project);
+  formData.append("techList", JSON.stringify(projectInfo.techList));
+  formData.append("image", projectInfo.image);
+
+  const response = await httpMultiPartForm.post(URL, formData);
   return response;
 };

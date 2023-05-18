@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../utils/mailer");
 const mongoose = require("mongoose");
+const path = require("path");
 
 exports.adminLogin = async (req, res, next) => {
   const email = req.body.email;
@@ -169,43 +170,68 @@ exports.createAdmin = async (req, res, next) => {
   }
 };
 
+exports.fetchAllProjects = async (req, res, next) => {
+  try {
+    const projects = await Project.find();
+    if (!projects) {
+      const error = new Error("No projects found!");
+      error.statusCode = 404;
+      throw error;
+    }
+    res.status(200).json({
+      message: "Projects fetched Successfully",
+      data: projects,
+    });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
+};
+
 exports.handleProjectUpload = async (req, res, next) => {
   const title = req.body.title;
   const desc = req.body.description;
   const githubLink = req.body.githubLink;
   const deployedLink = req.body.deployedLink;
-  const is_feature_project = Boolean(req.body.feature_project);
-  const techList = req.body.techList;
+  const is_feature_project = req.body.feature_project == "true";
+  const techList = JSON.parse(req.body.techList);
 
-  res.json(req.body);
+  try {
+    const admin = await Admin.findById(req.adminId);
+    if (!admin) {
+      const error = new Error("No Admin exists yet!");
+      error.statusCode = 404;
+      throw error;
+    }
 
-  // try {
-  //   const admin = await Admin.findById(req.adminId);
-  //   if (!admin) {
-  //     const error = new Error("No Admin exists yet!");
-  //     error.statusCode = 404;
-  //     throw error;
-  //   }
+    if (is_feature_project && !req.file) {
+      const err = new Error("Image not provided");
+      err.statusCode = 404;
+      throw err;
+    }
 
-  //   const project = new Project({
-  //     title: title,
-  //     description: desc,
-  //     githubLink: githubLink,
-  //     deployedLink: deployedLink,
-  //     feature_project: is_feature_project,
-  //     techList: techList,
-  //   });
+    const project = new Project({
+      title: title,
+      description: desc,
+      githubLink: githubLink,
+      deployedLink: deployedLink,
+      feature_project: is_feature_project,
+      techList: techList,
+      imageUrl: is_feature_project ? req.file.path : "null",
+    });
 
-  //   const newUploadedProject = await project.save();
-  //   res.status(200).json({
-  //     message: "Project uploaded successfully",
-  //     status: 200,
-  //     newProject: newUploadedProject,
-  //   });
-  // } catch (error) {
-  //   if (!error.statusCode) {
-  //     error.statusCode = 500;
-  //   }
-  //   next(error);
-  // }
+    const newUploadedProject = await project.save();
+    res.status(200).json({
+      message: "Project uploaded successfully",
+      status: 200,
+      newProject: newUploadedProject,
+    });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
 };
