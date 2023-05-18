@@ -9,4 +9,6 @@ router.post("/reset", adminController.GetPasswordReset);
 router.post("/new-password/:id/:token", adminController.handlePasswordReset);
 router.post("/upload-projects", isAuth, adminController.handleProjectUpload);
 
+router.get("/projects", adminController.fetchAllProjects);
+
 module.exports = router;
