@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Preloader from "./Components/Preloader/Preloader";
+import MySpinner from "./Components/Spinner/Spinner";
 import Home from "./Pages/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
@@ -28,7 +28,7 @@ function App() {
         <Route
           path="/admin"
           element={
-            <Suspense fallback={<Preloader />}>
+            <Suspense fallback={<MySpinner spinnerSize="lg" />}>
               <AdminLogin />
             </Suspense>
           }
@@ -45,7 +45,7 @@ function App() {
           <Route
             path="projects"
             element={
-              <Suspense fallback={<Preloader />}>
+              <Suspense fallback={<MySpinner spinnerSize="lg" />}>
                 <Projects />
               </Suspense>
             }
@@ -54,7 +54,7 @@ function App() {
         <Route
           path="/forget-password"
           element={
-            <Suspense fallback={<Preloader />}>
+            <Suspense fallback={<MySpinner spinnerSize="lg" />}>
               <ResetPassword />
             </Suspense>
           }
@@ -62,7 +62,7 @@ function App() {
         <Route
           path="/new-password/:id/:token"
           element={
-            <Suspense fallback={<Preloader />}>
+            <Suspense fallback={<MySpinner spinnerSize="lg" />}>
               <NewPassword />
             </Suspense>
           }

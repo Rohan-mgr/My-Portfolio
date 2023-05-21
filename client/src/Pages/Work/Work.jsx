@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Work.css";
 import { Container } from "react-bootstrap";
 import { FiGithub } from "react-icons/fi";
@@ -6,9 +6,16 @@ import { HiOutlineExternalLink } from "react-icons/hi";
 import SmallCard from "../../Components/Common/SmallCard/SmallCard";
 import useProjects from "../../hooks/useProjects";
 import MySpinner from "../../Components/Spinner/Spinner";
+import Button from "../../Components/Button/Button";
 
 function Work() {
+  const [showMore, SetshowMore] = useState(true);
   const { isLoading, projects } = useProjects();
+
+  function ShowMoreBtnClick() {
+    SetshowMore((prevState) => !prevState);
+  }
+
   return (
     <Container fluid id="work">
       <h2 className="number-heading">
@@ -22,6 +29,7 @@ function Work() {
         ) : projects?.length > 0 ? (
           projects
             ?.filter((p) => p?.feature_project === true)
+            ?.reverse()
             ?.map((p) => {
               return (
                 <li key={p?._id} className="project">
@@ -65,7 +73,7 @@ function Work() {
                   </div>
                   <div className="project__image">
                     <a
-                      href="https://photo-gallery-b0459.web.app/"
+                      href={p?.deployedLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -98,7 +106,8 @@ function Work() {
         ) : projects?.length > 0 ? (
           projects
             ?.filter((p) => p?.feature_project === false)
-            ?.map((project) => (
+            ?.slice(0, showMore ? 3 : projects.length)
+            .map((project) => (
               <SmallCard
                 key={project?._id}
                 title={project?.title}
@@ -112,6 +121,11 @@ function Work() {
           <p style={{ textAlign: "center" }}>No projects Found!</p>
         )}
       </ul>
+      <div style={{ width: "150px", margin: "2rem auto 0" }}>
+        <Button Func={ShowMoreBtnClick}>
+          {showMore ? "Show More" : "Show Less"}
+        </Button>
+      </div>
     </Container>
   );
 }
