@@ -8,8 +8,43 @@
     height: 100vh;
     padding: 0 150px;
 }
+.top__btn {
+    position: fixed;
+    bottom: 1rem; 
+    right: -8px; 
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    color: #64ffda;
+}
+
+.top__btn svg {
+    font-size: 3rem;
+    animation: animateTopBtn 2s ease-in-out infinite;
+}
+
+@keyframes animateTopBtn {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(5px);
+    }
+
+    60% {
+        transform: translateY(3px);
+    }
+}
+
 .landing-page h1 {
-    margin: 0 0 15px 4px;
+    margin: 6rem 0 15px 4px;
     font-family: 'PT Mono', monospace;
     color: #64ffda;
     font-size: clamp(14px, 5vw, 20px);

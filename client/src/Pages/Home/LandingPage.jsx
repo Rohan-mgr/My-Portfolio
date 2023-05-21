@@ -5,6 +5,10 @@ import { BsFacebook } from "react-icons/bs";
 import Button from "../../Components/Button/Button";
 
 function LandingPage() {
+  const handleProjectBtnClick = () => {
+    document.getElementById("work").scrollIntoView();
+  };
+
   return (
     <div className="landing-page">
       <div>
@@ -25,7 +29,9 @@ function LandingPage() {
         </p>
       </div>
       <div>
-        <Button Padding="1.25rem 1.75rem">Check out my projects!</Button>
+        <Button Padding="1.25rem 1.75rem" Func={handleProjectBtnClick}>
+          Check out my projects!
+        </Button>
       </div>
       <div className="email-wrapper">
         <a href="mailto:rohan.magar.415@gmail.com" rel="noreferer">
