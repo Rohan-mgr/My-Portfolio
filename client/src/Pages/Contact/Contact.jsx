@@ -5,6 +5,8 @@ import Button from "../../Components/Button/Button";
 import { useFormik } from "formik";
 import MySpinner from "../../Components/Spinner/Spinner";
 import { contactFormValidation } from "../../validation-schema/validation";
+import { handleMessageUpload } from "../../services/admin";
+import { toast } from "react-toastify";
 
 function Contact() {
   const formik = useFormik({
@@ -14,8 +16,17 @@ function Contact() {
       user_email: "",
       message: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await handleMessageUpload(values);
+        console.log(response?.message);
+        toast.success(response?.message);
+      } catch (error) {
+        toast.error(error.getMessage());
+        throw new Error(error);
+      } finally {
+        resetForm();
+      }
     },
     validationSchema: contactFormValidation,
     validateOnBlur: false,
