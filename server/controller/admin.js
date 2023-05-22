@@ -1,10 +1,11 @@
+const mongoose = require("mongoose");
+const path = require("path");
 const Admin = require("../Model/admin");
 const Project = require("../Model/project");
+const Message = require("../Model/message");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../utils/mailer");
-const mongoose = require("mongoose");
-const path = require("path");
 
 exports.adminLogin = async (req, res, next) => {
   const email = req.body.email;
@@ -134,7 +135,6 @@ exports.handlePasswordReset = async (req, res, next) => {
 
 exports.createAdmin = async (req, res, next) => {
   //   const errors = validationResult(req);
-  console.log("admin hello", req.body.pass);
   const fullName = req.body.fullName;
   const email = req.body.email;
   const pass = req.body.password;
@@ -227,6 +227,33 @@ exports.handleProjectUpload = async (req, res, next) => {
       message: "Project uploaded successfully",
       status: 200,
       newProject: newUploadedProject,
+    });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
+};
+
+exports.handleMessageUpload = async (req, res, next) => {
+  const name = req.body.from_name;
+  const phone = +req.body.phone;
+  const email = req.body.user_email;
+  const message = req.body.message;
+  try {
+    const newMessage = new Message({
+      senderName: name,
+      senderPhone: phone,
+      senderEmail: email,
+      senderMessage: message,
+    });
+
+    const uploadedMessage = await newMessage.save();
+    res.status(200).json({
+      message: "Message Sent Successfully",
+      status: 200,
+      newMessage: uploadedMessage,
     });
   } catch (error) {
     if (!error.statusCode) {

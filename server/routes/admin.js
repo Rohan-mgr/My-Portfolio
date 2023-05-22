@@ -8,6 +8,7 @@ router.post("/signin", adminController.adminLogin);
 router.post("/reset", adminController.GetPasswordReset);
 router.post("/new-password/:id/:token", adminController.handlePasswordReset);
 router.post("/upload-projects", isAuth, adminController.handleProjectUpload);
+router.post("/upload-message", adminController.handleMessageUpload);
 
 router.get("/projects", adminController.fetchAllProjects);
 

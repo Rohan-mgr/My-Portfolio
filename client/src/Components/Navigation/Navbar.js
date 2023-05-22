@@ -27,7 +27,7 @@ function NavigationBar() {
 
   return (
     <Navbar
-      className={showNavbar ? "navbar" : "hidden"}
+      className={`home__navbar ${showNavbar ? "" : "hidden"}`}
       collapseOnSelect
       expand="lg"
       variant="light"

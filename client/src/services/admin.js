@@ -39,3 +39,9 @@ export const handleProjectUpload = async (projectInfo) => {
   const response = await httpMultiPartForm.post(URL, formData);
   return response;
 };
+
+export const handleMessageUpload = async (msg) => {
+  const URL = AUTH_ENDPOINT.uploadMessage;
+  const response = await httpAuth.post(URL, JSON.stringify(msg));
+  return response;
+};

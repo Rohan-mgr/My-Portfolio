@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      if (currentScrollPos > 1500) {
+      if (currentScrollPos > 1400) {
         setShowTopBtn(true);
       } else {
         setShowTopBtn(false);

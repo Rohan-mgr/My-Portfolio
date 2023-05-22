@@ -25,7 +25,6 @@ function Projects() {
       values = { ...values, techList };
       try {
         const response = await handleProjectUpload(values);
-        console.log(response);
 
         setStatus((prevState) => {
           return {
