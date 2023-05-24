@@ -17,8 +17,8 @@ function ResetPassword() {
 
   useEffect(() => {
     const { isLoggedIn } = _getSecureLs("auth");
-    isLoggedIn && navigate("/admin/dashboard/welcome");
-  }, [navigate]);
+    isLoggedIn && navigate("/admin/dashboard/projects");
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -50,7 +50,7 @@ function ResetPassword() {
           expiryDate: expiryDate.toISOString(),
         });
 
-        navigate("/admin/dashboard/welcome");
+        navigate("/admin/dashboard/projects");
       } catch (e) {
         console.log(e);
         setStatus({ message: e });

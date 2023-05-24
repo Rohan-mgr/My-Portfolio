@@ -7,4 +7,5 @@ export const AUTH_ENDPOINT = {
   uploadProject: config.baseURL + "/admin/upload-projects",
   fetchProjects: config.baseURL + "/admin/projects",
   uploadMessage: config.baseURL + "/admin/upload-message",
+  fetchMessages: config.baseURL + "/admin/messages",
 };

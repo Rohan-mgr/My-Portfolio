@@ -262,3 +262,23 @@ exports.handleMessageUpload = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.fetchAllMessages = async (req, res, next) => {
+  try {
+    const messages = await Message.find();
+    if (!messages) {
+      const error = new Error("No Messages found!");
+      error.statusCode = 404;
+      throw error;
+    }
+    res.status(200).json({
+      message: "Messages fetched Successfully",
+      data: messages,
+    });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
+};
