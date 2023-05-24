@@ -3,6 +3,7 @@ import "./SideNav.css";
 import { _remove } from "../../helper/storage";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // temporary
+import Button from "../../Components/Button/Button";
 
 function SideNav() {
   // temporary redirection as it will be on profile setting
@@ -22,18 +23,6 @@ function SideNav() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="welcome"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                <i className="nav-icon fa fa-house-user" aria-hidden="true"></i>
-                Dashboard
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
                 to="projects"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
@@ -43,16 +32,29 @@ function SideNav() {
                 Add New Project
               </NavLink>
             </li>
-            <li>
-              <button
-                onClick={() => {
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="messages"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i className="nav-icon fa fa-comments" aria-hidden="true"></i>
+                Messages
+              </NavLink>
+            </li>
+            <div className="sidenav__btn__wrapper">
+              <Button
+                Padding="10px"
+                Func={() => {
                   _remove("auth");
                   navigate("/admin");
                 }}
               >
                 Logout
-              </button>
-            </li>
+              </Button>
+            </div>
           </ul>
         </nav>
       </div>

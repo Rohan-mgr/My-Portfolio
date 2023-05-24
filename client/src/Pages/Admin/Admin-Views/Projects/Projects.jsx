@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import Button from "../../../../Components/Button/Button";
@@ -7,10 +7,28 @@ import MultiInputs from "../../../../Components/MultiInputs/MultiInputs";
 import { projectFormValidation } from "../../../../validation-schema/validation";
 import { handleProjectUpload } from "../../../../services/admin";
 import Alert from "../../../../Components/Alert/Alert";
+import { useNavigate } from "react-router-dom";
+import { _getSecureLs, _removeAll } from "../../../../helper/storage";
 
 function Projects() {
   const [techList, setTechLists] = useState([""]);
   const [status, setStatus] = useState(null);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const expiryDate = _getSecureLs("auth")?.expiryDate;
+
+    const remainingMilliseconds =
+      new Date(expiryDate).getTime() - new Date().getTime();
+    setAutoLogout(remainingMilliseconds);
+  }, []);
+
+  const setAutoLogout = (remainingTime) => {
+    setTimeout(() => {
+      _removeAll();
+      navigate("/admin");
+    }, remainingTime);
+  };
 
   const formik = useFormik({
     initialValues: {

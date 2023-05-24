@@ -1,5 +1,5 @@
 import { AUTH_ENDPOINT } from "../helper/endpoint";
-const { httpAuth, httpMultiPartForm } = require("../helper/http");
+const { httpAuth, httpMultiPartForm, http } = require("../helper/http");
 
 export const getAllProjects = async () => {
   const URL = AUTH_ENDPOINT.fetchProjects;
@@ -43,5 +43,11 @@ export const handleProjectUpload = async (projectInfo) => {
 export const handleMessageUpload = async (msg) => {
   const URL = AUTH_ENDPOINT.uploadMessage;
   const response = await httpAuth.post(URL, JSON.stringify(msg));
+  return response;
+};
+
+export const getAllMessages = async () => {
+  const URL = AUTH_ENDPOINT.fetchMessages;
+  const response = await http.get(URL);
   return response;
 };

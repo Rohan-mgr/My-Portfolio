@@ -22,6 +22,10 @@ const Projects = React.lazy(() =>
   import("./Pages/Admin/Admin-Views/Projects/Projects")
 );
 
+const Messages = React.lazy(() =>
+  import("./Pages/Admin/Admin-Views/Messages/Messages")
+);
+
 function App() {
   return (
     <div className="App">
@@ -43,12 +47,20 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="welcome" element={<p>dashboard</p>} />
+          {/* <Route path="welcome" element={<p>dashboard</p>} /> */}
           <Route
             path="projects"
             element={
               <Suspense fallback={<MySpinner spinnerSize="lg" />}>
                 <Projects />
+              </Suspense>
+            }
+          />
+          <Route
+            path="messages"
+            element={
+              <Suspense fallback={<MySpinner spinnerSize="lg" />}>
+                <Messages />
               </Suspense>
             }
           />

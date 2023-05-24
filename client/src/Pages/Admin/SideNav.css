@@ -21,6 +21,13 @@
     margin: 0;
 }
 
+.main-sidebar .sidenav__btn__wrapper {
+    width: 250px ;
+    position: fixed;
+    bottom: 1rem;
+    padding: 0 10px;
+}
+
 aside .sidebar .nav-pills .nav-link {
     border-radius: 0 !important;
 }
