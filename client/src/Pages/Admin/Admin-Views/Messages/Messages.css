@@ -1,0 +1,21 @@
+.name__initials__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.name__initials__wrapper div p {
+    margin: 0; 
+    padding: 0; 
+}
+.name__initials__wrapper div p:first-child {
+    font-weight: bold;
+    font-size: .9rem;
+    color: #000;
+}
+.name__initials__wrapper div p:last-child {
+    margin-top: -5px;
+    font-size: .7rem;
+}
+.message__content {
+    margin-top: 1rem;
+}

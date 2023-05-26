@@ -52,7 +52,6 @@ function ResetPassword() {
 
         navigate("/admin/dashboard/projects");
       } catch (e) {
-        console.log(e);
         setStatus({ message: e });
         resetForm();
         throw new Error(e);
