@@ -264,8 +264,33 @@ exports.handleMessageUpload = async (req, res, next) => {
 };
 
 exports.fetchAllMessages = async (req, res, next) => {
+  const filterParam = req.params.filterParam;
+
+  let filter;
+  if (filterParam === "last10days") {
+    const last10days = new Date();
+    last10days.setDate(last10days.getDate() - 10); // Subtract 10 days from the current date
+
+    filter = {
+      createdAt: {
+        $gte: new Date(last10days.setHours(0, 0, 0, 0)), // Start of 30 days ago
+        $lt: new Date(),
+      },
+    };
+  } else if (filterParam === "today") {
+    const today = new Date();
+    filter = {
+      createdAt: {
+        $gte: new Date(today.setHours(0, 0, 0, 0)), // Start of today
+        $lt: new Date(today.setHours(23, 59, 59, 999)), // End of today
+      },
+    };
+  } else {
+    filter = null;
+  }
+
   try {
-    const messages = await Message.find();
+    const messages = await Message.find(filter);
     if (!messages) {
       const error = new Error("No Messages found!");
       error.statusCode = 404;

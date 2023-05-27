@@ -76,7 +76,7 @@ function Projects() {
           {status.message}
         </Alert>
       )}
-      <h1>+ Add New Projects</h1>
+      <h2 style={{ color: "#000" }}>+ Add New Projects</h2>
       <Form
         className="common__form"
         onSubmit={formik.handleSubmit}

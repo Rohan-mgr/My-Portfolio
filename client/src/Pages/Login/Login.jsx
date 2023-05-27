@@ -31,7 +31,6 @@ function ResetPassword() {
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await handleAdminLogin(values);
-        console.log(response);
         setStatus((prevState) => {
           return {
             ...prevState,
@@ -52,7 +51,6 @@ function ResetPassword() {
 
         navigate("/admin/dashboard/projects");
       } catch (e) {
-        console.log(e);
         setStatus({ message: e });
         resetForm();
         throw new Error(e);

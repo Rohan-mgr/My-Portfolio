@@ -46,8 +46,8 @@ export const handleMessageUpload = async (msg) => {
   return response;
 };
 
-export const getAllMessages = async () => {
-  const URL = AUTH_ENDPOINT.fetchMessages;
+export const getAllMessages = async (filter) => {
+  const URL = AUTH_ENDPOINT.fetchMessages + `/${filter}`;
   const response = await http.get(URL);
   return response;
 };
