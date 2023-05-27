@@ -17,3 +17,7 @@
     line-height: 16.41px;
     font-family: 'PT Mono', monospace !important;
 }
+.name__initials {
+    margin-right: 7px;
+    margin-bottom: 0;
+}
