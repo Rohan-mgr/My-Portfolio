@@ -11,6 +11,6 @@ router.post("/upload-projects", isAuth, adminController.handleProjectUpload);
 router.post("/upload-message", adminController.handleMessageUpload);
 
 router.get("/projects", adminController.fetchAllProjects);
-router.get("/messages", isAuth, adminController.fetchAllMessages);
+router.get("/messages/:filterParam", isAuth, adminController.fetchAllMessages);
 
 module.exports = router;
