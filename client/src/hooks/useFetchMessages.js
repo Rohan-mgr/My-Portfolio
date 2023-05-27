@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllMessages } from "../services/admin";
 
-export default function useProjects() {
+export default function useFetchMessages(filter) {
+  console.log(filter, "from useFetchMessage");
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessageLists] = useState([]);
 
@@ -9,8 +10,7 @@ export default function useProjects() {
     const fetchMessages = async () => {
       setIsLoading(true);
       try {
-        const response = await getAllMessages();
-        console.log(response);
+        const response = await getAllMessages(filter);
         setMessageLists(response?.data);
       } catch (e) {
         throw new Error(e);
@@ -19,7 +19,7 @@ export default function useProjects() {
       }
     };
     fetchMessages();
-  }, []);
+  }, [filter]);
 
-  return { isLoading, messages };
+  return { isLoading, messages, setMessageLists };
 }

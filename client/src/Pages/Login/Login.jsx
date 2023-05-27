@@ -31,7 +31,6 @@ function ResetPassword() {
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await handleAdminLogin(values);
-        console.log(response);
         setStatus((prevState) => {
           return {
             ...prevState,

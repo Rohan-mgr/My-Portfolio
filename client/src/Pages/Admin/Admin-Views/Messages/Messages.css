@@ -1,21 +1,25 @@
-.name__initials__wrapper {
+
+.message__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-.name__initials__wrapper div p {
-    margin: 0; 
-    padding: 0; 
+.message h2 {
+    color: #000; 
 }
-.name__initials__wrapper div p:first-child {
-    font-weight: bold;
-    font-size: .9rem;
-    color: #000;
+
+.message h2 svg {
+    margin-top: -6px; 
+    font-size: 2rem;
 }
-.name__initials__wrapper div p:last-child {
-    margin-top: -5px;
-    font-size: .7rem;
-}
-.message__content {
-    margin-top: 1rem;
+
+@media (max-width: 468px) {
+    .message__header {
+        flex-direction: column;
+        text-align: left;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 }
