@@ -5,6 +5,7 @@
     background-color: rgba(10, 25, 47, 0.85) !important;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
 .home__navbar {
     z-index: 999;
     position: fixed;
@@ -52,25 +53,31 @@
     font-size: .97rem;
 }
 
-.navbar-nav a {
+.navbar-nav .nav-link {
     color: #ccd6f6 !important;
     font-family: 'PT Mono', monospace;
     font-size: .95rem;
     letter-spacing: 1px;
+    text-decoration: none !important;
 }
 
 
 .navbar-nav .nav-link.nav-last {
     margin-right: .5rem !important;
 }
-.navbar-nav a:hover {
+.navbar-nav .nav-link:hover {
     color: #64ffda !important;
 }
 
-.navbar-nav a span {
+.navbar-nav .nav-link span {
     font-size: 0.9rem;
     color: #64ffda !important;
     margin-right: 3px;
+}
+
+.resume-btn {
+    text-decoration: none !important;
+    color: #64ffda !important;
 }
 
 
@@ -89,6 +96,5 @@
         display: block;
         margin: 5px auto;
     }
-
 }
 

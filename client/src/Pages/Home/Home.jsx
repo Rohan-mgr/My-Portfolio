@@ -6,6 +6,8 @@ import Work from "../Work/Work";
 import Contact from "../Contact/Contact";
 import Footer from "../../Components/Footer/Footer";
 import { BiUpArrowCircle } from "react-icons/bi";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Home() {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -27,6 +29,16 @@ function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrollPos]);
+
+  useEffect(() => {
+    Aos.init({
+      offset: 200,
+      duration: 600,
+      easing: "linear",
+      delay: 100,
+      anchorPlacement: "bottom-top",
+    });
+  }, []);
 
   return (
     <>
