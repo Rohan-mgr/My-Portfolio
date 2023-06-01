@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function About() {
   return (
-    <Container fluid id="about">
+    <Container fluid id="about" data-aos="fade-up">
       <h2 className="number-heading">
         <span>01.</span> About Me
       </h2>

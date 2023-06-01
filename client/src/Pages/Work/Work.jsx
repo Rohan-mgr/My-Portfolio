@@ -32,7 +32,7 @@ function Work() {
             ?.reverse()
             ?.map((p) => {
               return (
-                <li key={p?._id} className="project">
+                <li key={p?._id} className="project" data-aos="fade-up">
                   <div className="project__content">
                     <div>
                       <p className="project-overline">Featured Project</p>
@@ -107,9 +107,10 @@ function Work() {
           projects
             ?.filter((p) => p?.feature_project === false)
             ?.slice(0, showMore ? 3 : projects.length)
-            .map((project) => (
+            .map((project, index) => (
               <SmallCard
                 key={project?._id}
+                i={index}
                 title={project?.title}
                 desc={project?.description}
                 deployedLink={project?.deployedLink}

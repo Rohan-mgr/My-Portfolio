@@ -28,7 +28,7 @@
 }
 
 .message__content p:first-child {
-    margin-bottom: 5px;
+    margin: 5px 0;
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-all;

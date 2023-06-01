@@ -5,7 +5,8 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Logo from "../Logo/Logo";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "../Button/Button";
+import RohanCV from "../../Assets/Images/Rohan-CV.pdf";
+import { Fade } from "react-awesome-reveal";
 
 function NavigationBar() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -34,9 +35,11 @@ function NavigationBar() {
       bg="light"
     >
       <Container fluid className="m-2">
-        <Navbar.Brand href="/">
-          <Logo />
-        </Navbar.Brand>
+        <Fade triggerOnce direction="down" duration={700}>
+          <Navbar.Brand href="/">
+            <Logo />
+          </Navbar.Brand>
+        </Fade>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-md}`}
@@ -50,18 +53,33 @@ function NavigationBar() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end align-items-center flex-grow-1 text-center">
-              <Nav.Link href="/#about">
-                <span>01.</span>About
-              </Nav.Link>
-              <Nav.Link href="/#work">
-                <span>02.</span>Work
-              </Nav.Link>
-              <Nav.Link className="nav-last" href="/#contact">
-                <span>03.</span>Contact
-              </Nav.Link>
-              <div style={{ width: "100px" }}>
-                <Button Padding="0.65rem 1rem">Resume</Button>
-              </div>
+              <Fade triggerOnce direction="down" duration={700} delay={200}>
+                <Nav.Link href="/#about">
+                  <span>01.</span>About
+                </Nav.Link>
+              </Fade>
+              <Fade triggerOnce direction="down" duration={700} delay={300}>
+                <Nav.Link href="/#work">
+                  <span>02.</span>Work
+                </Nav.Link>
+              </Fade>
+              <Fade triggerOnce direction="down" duration={700} delay={400}>
+                <Nav.Link className="nav-last" href="/#contact">
+                  <span>03.</span>Contact
+                </Nav.Link>
+              </Fade>
+              <Fade triggerOnce direction="down" duration={700} delay={500}>
+                <div style={{ width: "100px" }}>
+                  <a
+                    className="primary-btn resume-btn"
+                    href={RohanCV}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Resume
+                  </a>
+                </div>
+              </Fade>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

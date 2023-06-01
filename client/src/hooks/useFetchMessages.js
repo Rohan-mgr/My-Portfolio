@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAllMessages } from "../services/admin";
 
 export default function useFetchMessages(filter) {
-  console.log(filter, "from useFetchMessage");
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessageLists] = useState([]);
 
@@ -11,7 +10,7 @@ export default function useFetchMessages(filter) {
       setIsLoading(true);
       try {
         const response = await getAllMessages(filter);
-        setMessageLists(response?.data);
+        setMessageLists(response?.data?.reverse());
       } catch (e) {
         throw new Error(e);
       } finally {
