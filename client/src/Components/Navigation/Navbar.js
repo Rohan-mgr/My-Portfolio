@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -11,6 +11,8 @@ import { Fade } from "react-awesome-reveal";
 function NavigationBar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const offcanvasRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,26 @@ function NavigationBar() {
     };
   }, [prevScrollPos]);
 
+  const handleCloseOffcanvas = () => {
+    setShowOffcanvas(false);
+  };
+
+  const handleToggleOffcanvas = () => {
+    setShowOffcanvas(!showOffcanvas);
+  };
+
+  const handleNavLinkClick = (id) => {
+    handleCloseOffcanvas();
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Navbar
       className={`home__navbar ${showNavbar ? "" : "hidden"}`}
@@ -40,36 +62,50 @@ function NavigationBar() {
             <Logo />
           </Navbar.Brand>
         </Fade>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
+        <Navbar.Toggle
+          as={Nav.Link}
+          aria-controls="offcanvasNavbar-expand-md"
+          onClick={handleToggleOffcanvas}
+        />
         <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-md}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-md`}
+          id="offcanvasNavbar-expand-md"
+          aria-labelledby="offcanvasNavbarLabel-expand-md"
           placement="end"
+          show={showOffcanvas}
+          onHide={handleCloseOffcanvas}
+          ref={offcanvasRef}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title
-              id={`offcanvasNavbarLabel-expand-md`}
-            ></Offcanvas.Title>
+            <Offcanvas.Title id="offcanvasNavbarLabel-expand-md"></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end align-items-center flex-grow-1 text-center">
               <Fade triggerOnce direction="down" duration={700} delay={200}>
-                <Nav.Link href="/#about">
+                <span
+                  className="nav-link"
+                  onClick={() => handleNavLinkClick("about")}
+                >
                   <span>01.</span>About
-                </Nav.Link>
+                </span>
               </Fade>
               <Fade triggerOnce direction="down" duration={700} delay={300}>
-                <Nav.Link href="/#work">
+                <span
+                  className="nav-link"
+                  onClick={() => handleNavLinkClick("work")}
+                >
                   <span>02.</span>Work
-                </Nav.Link>
+                </span>
               </Fade>
               <Fade triggerOnce direction="down" duration={700} delay={400}>
-                <Nav.Link className="nav-last" href="/#contact">
+                <span
+                  className="nav-link"
+                  onClick={() => handleNavLinkClick("contact")}
+                >
                   <span>03.</span>Contact
-                </Nav.Link>
+                </span>
               </Fade>
               <Fade triggerOnce direction="down" duration={700} delay={500}>
-                <div style={{ width: "100px" }}>
+                <div className="resume-btn-wrapper" style={{ width: "100px" }}>
                   <a
                     className="primary-btn resume-btn"
                     href={RohanCV}
